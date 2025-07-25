@@ -1,4 +1,4 @@
-**#Aims:**
+# **Aims:**
 Use MPI to drive WRF for a decadal simulation over the NA-CORDEX (12km res) and CONUS (4km res) regions. The simulations should:
 •	Represent the time varying or different land use land categories (LULC) and aerosol (AOD) between historical and future climate
 •	The inner domain should cover the current east and west coastal wind farm leasing areas
@@ -7,10 +7,10 @@ Use MPI to drive WRF for a decadal simulation over the NA-CORDEX (12km res) and 
 •	The simulation uses WARM restarts for the NA-CORDEX domain for the entire period then uses ndown.exe to simulate selected years for the CONUS domain with at least a 3-month spin up period before Jan 01 to achieve reasonable snow and soil fields.
 •	The simulations will enable both general atmospheric research and various specific applications in a changing climate, including solar energy, wind energy, windstorms, deep convection, freezing rain, land surface effect, heatwave & drought, etc.
 
-#**Overview of the Simulations:**
+# **Overview of the Simulations:**
 The WRF simulations were done on the NCAR's Derecho HPC. The simulations were summitted as yearly chunks. For each year of simulation, 12 jobs responsible for 12 individual monthly simulations were submitted with the chronological dependency enabled.
 
-##**Preparation for the simualtion:**
+## **Preparation for the simualtion:**
 •	Initial boundary conditions prepared for each year of simulation,
 •	[namelist.input](https://github.com/levinzx/NA-CORDEX-CMIP6-CORNELL/blob/main/namelist.input.1960-01-01_00) specified for each month,
 •	[pbs job script](https://github.com/levinzx/NA-CORDEX-CMIP6-CORNELL/blob/main/runwrf.pbs.1960-01) prepared for each month,
@@ -22,8 +22,8 @@ The WRF simulations were done on the NCAR's Derecho HPC. The simulations were su
 [runwrf.pbs.1960-01](https://github.com/levinzx/NA-CORDEX-CMIP6-CORNELL/blob/main/runwrf.pbs.1960-01)
 [script.runwrf.template](https://github.com/levinzx/NA-CORDEX-CMIP6-CORNELL/blob/main/script.runwrf.template)
 
-#**Procedures:**
-##**WRF Compilation**
+# **Procedures:**
+## **WRF Compilation**
 •	Model version: WRF V4.6.1
 •	Modify the Registry to make sure all needed output are written to the “rh” streams
     o	ZNT
@@ -44,7 +44,7 @@ The WRF simulations were done on the NCAR's Derecho HPC. The simulations were su
 •	About long-term simulation: WRF uses single precision for most variables, including XTIME. The round-off error would occur after about 32 years in precipitation buckets, and the buckets may be tipping off too soon, resulting in negative values. The round-off error in XTIME also affects the calculation of the nudging coefficient, and a problem would occur around 23.5 years of simulation. See [Corrections for tipping bucket and nudging in very long simulations](https://github.com/wrf-model/WRF/pull/2063)
 •	Compile the WRF using PNETCDF and enable the feature in the namelist.input to speed up the simulation.
 
-##**WPS and input preparation:**
+## **WPS and input preparation:**
 1)	Download the MPI fields from various sources (various data formats) to gather the list of mandatory fields needed to run WRF.
 2)	Since most of the MPI data are in NetCDF format, and it is a real hassle to convert NetCDF to GRIB then create a Vtable for MPI variables (especially the soil properties at different levels), we convert MPI data directly to WPS intermediate format instead of using ungrib.exe.
     •	Note that the default MPI fillvalue is positive and does not work with the default metgrid.exe interpolation setting. One needs to replace the fillvalue to a negative one, e.g. -1E30, in the WPS intermediate files.
@@ -61,7 +61,7 @@ The WRF simulations were done on the NCAR's Derecho HPC. The simulations were su
 5)	For future simulations, the changes in each LULC category are added to the historical LULC fields since WRF and MPI have very different land surface categories.
     •	MPI land categories are mapped to the WRF MODIS 21 land categories before the perturbation between historical and future climates are calculated.
 
-##**WRF preparation:**
+## **WRF preparation:**
 1)	Enables PNETCDF feature in the namelist.input
 2)	Enables spectrum nudging above PBL
 3)	Enables varying SST
