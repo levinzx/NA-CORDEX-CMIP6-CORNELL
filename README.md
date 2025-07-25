@@ -1,4 +1,4 @@
-#**Aims:**
+**#Aims:**
 Use MPI to drive WRF for a decadal simulation over the NA-CORDEX (12km res) and CONUS (4km res) regions. The simulations should:
 •	Represent the time varying or different land use land categories (LULC) and aerosol (AOD) between historical and future climate
 •	The inner domain should cover the current east and west coastal wind farm leasing areas
