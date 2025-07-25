@@ -1,0 +1,25 @@
+#!/bin/bash
+#PBS -N hist
+#PBS -A PROJECT_NAME
+#PBS -j oe
+#PBS -q main
+#PBS -l walltime=12:00:00
+##PBS -l select=18:ncpus=128:mpiprocs=128
+#PBS -l select=5:ncpus=128:mpiprocs=128
+
+ulimit -s unlimited
+
+rm wrfbdy_d01
+rm wrffdda_d01
+rm wrfinput_d01
+rm wrflowinp_d01
+ln -sf wrfbc/19600101-00_19610101-06/wrf* . 
+
+rm namelist.input
+ln -sf namelist.input.1960-01-01_00 namelist.input
+
+date
+mpiexec -n 640 -ppn 128 ./wrf.exe
+date
+
+mv rsl.error.0000 log.1960-01-01_00

@@ -1,0 +1,13 @@
+JOBID1=$(qsub -h runwrf.pbs.1960-01)
+JOBID2=$(qsub -W depend=afterok:$JOBID1 runwrf.pbs.1960-02)
+JOBID3=$(qsub -W depend=afterok:$JOBID2 runwrf.pbs.1960-03)
+JOBID4=$(qsub -W depend=afterok:$JOBID3 runwrf.pbs.1960-04)
+JOBID5=$(qsub -W depend=afterok:$JOBID4 runwrf.pbs.1960-05)
+JOBID6=$(qsub -W depend=afterok:$JOBID5 runwrf.pbs.1960-06)
+JOBID7=$(qsub -W depend=afterok:$JOBID6 runwrf.pbs.1960-07)
+JOBID8=$(qsub -W depend=afterok:$JOBID7 runwrf.pbs.1960-08)
+JOBID9=$(qsub -W depend=afterok:$JOBID8 runwrf.pbs.1960-09)
+JOBID10=$(qsub -W depend=afterok:$JOBID9 runwrf.pbs.1960-10)
+JOBID11=$(qsub -W depend=afterok:$JOBID10 runwrf.pbs.1960-11)
+JOBID12=$(qsub -W depend=afterok:$JOBID11 runwrf.pbs.1960-12)
+qrls $JOBID1
