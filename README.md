@@ -11,30 +11,30 @@ Use MPI to drive WRF for a decadal simulation over the NA-CORDEX (12km res) and 
 The WRF simulations were done on the NCAR's Derecho HPC. The simulations were submitted as yearly chunks. For each year of simulation, 12 jobs responsible for 12 individual monthly simulations were submitted with the chronological dependency enabled.
 
 ## **Preparation for the simulation:**
--Initial boundary conditions prepared for each year of simulation,
--[namelist.input](https://github.com/levinzx/NA-CORDEX-CMIP6-CORNELL/blob/main/namelist.input.1960-01-01_00) specified for each month,
--[pbs job script](https://github.com/levinzx/NA-CORDEX-CMIP6-CORNELL/blob/main/runwrf.pbs.1960-01) prepared for each month,
--Then the jobs for one one-year simulation are submitted using a [script](https://github.com/levinzx/NA-CORDEX-CMIP6-CORNELL/blob/main/script.runwrf.template).
+- Initial boundary conditions prepared for each year of simulation,
+- [namelist.input](https://github.com/levinzx/NA-CORDEX-CMIP6-CORNELL/blob/main/namelist.input.1960-01-01_00) specified for each month,
+- [pbs job script](https://github.com/levinzx/NA-CORDEX-CMIP6-CORNELL/blob/main/runwrf.pbs.1960-01) prepared for each month,
+- Then the jobs for one one-year simulation are submitted using a [script](https://github.com/levinzx/NA-CORDEX-CMIP6-CORNELL/blob/main/script.runwrf.template).
 
 ## **Example of the namelist and scripts:**
--[namelist.wps](https://github.com/levinzx/NA-CORDEX-CMIP6-CORNELL/blob/main/namelist.wps)
--[namelist.input.1960-01-01_00](https://github.com/levinzx/NA-CORDEX-CMIP6-CORNELL/blob/main/namelist.input.1960-01-01_00)
--[runwrf.pbs.1960-01](https://github.com/levinzx/NA-CORDEX-CMIP6-CORNELL/blob/main/runwrf.pbs.1960-01)
--[script.runwrf.template](https://github.com/levinzx/NA-CORDEX-CMIP6-CORNELL/blob/main/script.runwrf.template)
+- [namelist.wps](https://github.com/levinzx/NA-CORDEX-CMIP6-CORNELL/blob/main/namelist.wps)
+- [namelist.input.1960-01-01_00](https://github.com/levinzx/NA-CORDEX-CMIP6-CORNELL/blob/main/namelist.input.1960-01-01_00)
+- [runwrf.pbs.1960-01](https://github.com/levinzx/NA-CORDEX-CMIP6-CORNELL/blob/main/runwrf.pbs.1960-01)
+- [script.runwrf.template](https://github.com/levinzx/NA-CORDEX-CMIP6-CORNELL/blob/main/script.runwrf.template)
 
 # **Procedures:**
 ## **WRF Compilation**
--Model version: WRF V4.6.1
--Modify the Registry to make sure all needed outputs are written to the “rh” streams
-    +ZNT
-    +RMOL
-    +SWDDIR
-    +SWDDIRC
-    +SWDDNI
-    +SWDDNIC
-    +SWDOWN
-    +SWDOWNC
-    +SWDDIF
+- Model version: WRF V4.6.1
+- Modify the Registry to make sure all needed outputs are written to the “rh” streams
+    + ZNT
+    + RMOL
+    + SWDDIR
+    + SWDDIRC
+    + SWDDNI
+    + SWDDNIC
+    + SWDOWN
+    + SWDOWNC
+    + SWDDIF
 -WRF does not have buckets for frozen hydrometers, which causes round-off errors in long-term simulations. Modify the code to add “graup_acc_nc” and “hail_acc_nc” to the “prec_acc_dt” option. And add the buckets for frozen hydrometer types: “i_snownc”, “i_graupelnc”, “i_hailnc”
     +Files involved:
         *phys/module_diag_misc.F
