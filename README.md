@@ -2,7 +2,7 @@
 Use MPI to drive WRF for a decadal simulation over the NA-CORDEX (12km res) and CONUS (4km res) regions. The simulations should:
 - Represent the time varying or different land use land categories (LULC) and aerosol (AOD) between historical and future climate
 - The outer domain covers the NA-CORDEX required area, and the inner domain covers the current US east and west coastal wind farm leasing areas
-        +![model_domains](https://github.com/levinzx/NA-CORDEX-CMIP6-CORNELL/blob/main/model_domain.png)
+        + ![model_domains](https://github.com/levinzx/NA-CORDEX-CMIP6-CORNELL/blob/main/model_domain.png)
 - Input data is the MPI-LR ensemble member r1i1p1f1, which has the most comprehensive list of fields available to drive the WRF model.
 - Due to the limited computational resources, only a limited years of simulation over the CONUS domain is planned. As a result, we want to select years in HIST and FUTURE that have a similar magnitude of climate variabilities, thus the comparison between HIST and FUTURE is less impacted by the climate variability.
 - The simulation uses WARM restarts for the NA-CORDEX domain for the entire period, then uses ndown.exe to simulate selected years for the CONUS domain with at least a 3-month spin-up period before January 01 to achieve reasonable snow and soil fields. Both domains use spectrum nudging above the PBL to avoid drifting in the WARM restart runs from the input GCM.
