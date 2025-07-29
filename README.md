@@ -10,7 +10,7 @@ Use MPI to drive WRF for a decadal simulation over the NA-CORDEX (12km res) and 
 
 # **Overview of the Simulations:**
 | domain | institute | contact | rcm_name | driving_model | ensemble | experiment | status | estimated_completion_date | 
-| :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+| :----: | :-------: | :-----: | :------: | :-----------: | :------: | :--------: | :----: | :-----------------------: |
 | NAM-12 | CORNELL | X. Zhou / S.C. Pryor | WRF | MPI-ESM1-2-LR | r1i1p1f1 | historical | running | 2025-12 |
 | NAM-12 | CORNELL | X. Zhou / S.C. Pryor | WRF | MPI-ESM1-2-LR | r1i1p1f1 | ssp585 | running | 2025-12 |
 
