@@ -17,6 +17,9 @@ Use MPI to drive WRF for a decadal simulation over the NA-CORDEX (12km res) and 
 - The WRF simulations were done on the NCAR's Derecho HPC. The simulations were submitted as yearly chunks. For each year of simulation, 12 jobs responsible for 12 individual monthly simulations were submitted with the chronological dependency enabled.
 
 ## **Preparation for the simulation:**
+Model version: [WRF V4.6.1](https://github.com/wrf-model/WRF/releases/tag/v4.6.1)
+
+## **Preparation for the simulation:**
 - Initial boundary conditions prepared for each year of simulation,
 - [namelist.input](https://github.com/levinzx/NA-CORDEX-CMIP6-CORNELL/blob/main/namelist.input.1960-01-01_00) specified for each month,
 - [pbs job script](https://github.com/levinzx/NA-CORDEX-CMIP6-CORNELL/blob/main/runwrf.pbs.1960-01) prepared for each month,
