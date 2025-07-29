@@ -9,12 +9,12 @@ Use MPI to drive WRF for a decadal simulation over the NA-CORDEX (12km res) and 
 - The simulations will enable both general atmospheric research and various specific applications in a changing climate, including solar energy, wind energy, windstorms, deep convection, freezing rain, land surface effect, heatwave & drought, etc.
 
 # **Overview of the Simulations:**
-domain | institute | contact | rcm_name | driving_model | ensemble | experiment | status | estimated_completion_date | 
--- | -- | -- | -- | -- | -- | -- | -- | -- | --
-NAM-12 | CORNELL | X. Zhou / S.C. Pryor | WRF | MPI-ESM1-2-LR | r1i1p1f1 | historical | running | 2025-12 |
--- | -- | -- | -- | -- | -- | -- | -- | -- | --
-NAM-12 | CORNELL | X. Zhou / S.C. Pryor | WRF | MPI-ESM1-2-LR | r1i1p1f1 | ssp585 | running | 2025-12 |
-The WRF simulations were done on the NCAR's Derecho HPC. The simulations were submitted as yearly chunks. For each year of simulation, 12 jobs responsible for 12 individual monthly simulations were submitted with the chronological dependency enabled.
+| domain | institute | contact | rcm_name | driving_model | ensemble | experiment | status | estimated_completion_date | 
+| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+| NAM-12 | CORNELL | X. Zhou / S.C. Pryor | WRF | MPI-ESM1-2-LR | r1i1p1f1 | historical | running | 2025-12 |
+| NAM-12 | CORNELL | X. Zhou / S.C. Pryor | WRF | MPI-ESM1-2-LR | r1i1p1f1 | ssp585 | running | 2025-12 |
+
+- The WRF simulations were done on the NCAR's Derecho HPC. The simulations were submitted as yearly chunks. For each year of simulation, 12 jobs responsible for 12 individual monthly simulations were submitted with the chronological dependency enabled.
 
 ## **Preparation for the simulation:**
 - Initial boundary conditions prepared for each year of simulation,
