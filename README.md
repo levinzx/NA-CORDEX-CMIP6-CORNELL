@@ -48,7 +48,7 @@ Use MPI to drive WRF for a decadal simulation over the NA-CORDEX (12km res) and 
         * phys/module_diagnostics_driver.F
         * Registry/Registry.EM_COMMOM
 - Note, ACSHFLSM, ACLHFLSM, and other Noahmp accumulated values are done over the period of noahmp_acc_dt = 60, and no buckets are needed.
-- About long-term simulation: WRF uses single precision for most variables, including XTIME. The round-off error would occur after about 32 years in precipitation buckets, and the buckets may be tipping off too soon, resulting in negative values. The round-off error in XTIME also affects the calculation of the nudging coefficient, and a problem would occur around 23.5 years of simulation. See [Corrections for tipping bucket and nudging in very long simulations](https://github.com/wrf-model/WRF/pull/2063) by Tanya Spero (The problem was officially fixed in WRF V4.7.0 on April 25).
+- About long-term simulation: WRF uses single precision for most variables, including XTIME. The round-off error would occur after about 32 years in precipitation buckets, and the buckets may be tipping off too soon, resulting in negative values. The round-off error in XTIME also affects the calculation of the nudging coefficient, and a problem would occur around 23.5 years of simulation. See [Corrections for tipping bucket and nudging in very long simulations](https://github.com/wrf-model/WRF/pull/2063) by Tanya Spero (The problem was officially fixed in WRF V4.7.0 on April 25, 2025).
 - Compile the WRF using PNETCDF and enable the feature in the namelist.input to speed up the simulation.
 
 ## **WPS and input preparation:**
