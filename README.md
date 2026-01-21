@@ -66,7 +66,8 @@ Use MPI to drive WRF for a decadal simulation over the NA-CORDEX (12km res) and 
     - Make sure the interpolation generates the lake surface temperature, or the lake effect will not exist. And the resulting open lake temperature - lake ice contrast has to be reasonable, otherwise the lake effect will be messed up.
     - Well correspondence between SST and SEAICE over the ocean (e.g., use the same interpolation methods to produce fields over the ocean. The interpolation methods can be different over lakes, but preferably the same).
 5)	For future simulations, the changes in each LULC category are added to the historical LULC fields since WRF and MPI have very different land surface categories.
-    - MPI land categories are mapped to the WRF MODIS 21 land categories before the perturbations between historical and future climates are calculated.
+    - Changes in MPI land categories, in terms of total forest, shrub, cropland, grassland etc., are calculated. Then the changes are mapped to WRF sub-categories based on the fraction of each sub-category to the total.
+    - MPI doesn't have an urban category. Therefore, the urban changes are based on urban fraction dataset by Gao and O’Neill urban fraction dataset by [Gao, J., & O'Neill, B.C. (2020). Mapping global urban land for the 21st century with data-driven simulations and Shared Socioeconomic Pathways. Nature Communications](https://doi.org/10.1038/s41467-020-15788-7).
 
 ## **WRF preparation:**
 1)	Enables PNETCDF feature in the namelist.input
